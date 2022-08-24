@@ -4,6 +4,7 @@ import { TodoSearch } from './TodoSearch'
 import { TodoList } from './TodoList'
 import { TodoItem } from './TodoItem'
 import { CreateTodoButton } from './CreateTodoButton'
+//import './App.css'
 
 import React from 'react';
 
@@ -16,7 +17,7 @@ const todo = [
 
 function App() {
   return (
-    <>
+    <div className='App'>
       <TodoCounter />
       <TodoSearch />
       <TodoList>
@@ -25,7 +26,7 @@ function App() {
         ))}
       </TodoList>
       <CreateTodoButton />
-    </>
+    </div>
   );
 }
 
