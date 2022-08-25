@@ -11,7 +11,20 @@ const todoDefault = [
 
 
 function App() {
-  const [todos, setTodos] = React.useState(todoDefault);
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  let parsedTodos;
+
+  if (!localStorageTodos) {
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    parsedTodos = [];
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  /*--------------------------------*/
+
+
+  const [todos, setTodos] = React.useState(parsedTodos);
 
   const [searchValue, setSearchValue] = React.useState('');
   
@@ -34,6 +47,18 @@ function App() {
 
   /*--------------------------------*/
 
+    // Creamos la función en la que actualizaremos nuestro localStorage
+    const saveTodos = (newTodos) => {
+      // Convertimos a string nuestros TODOs
+      const stringifiedTodos = JSON.stringify(newTodos);
+      // Los guardamos en el localStorage
+      localStorage.setItem('TODOS_V1', stringifiedTodos);
+      // Actualizamos nuestro estado
+      setTodos(newTodos);
+    };
+
+
+  /*--------------------------------*/
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text === text);
 
