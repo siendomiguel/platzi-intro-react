@@ -28,6 +28,7 @@ function TodoForm() {
         value={newTodoValue}
         onChange={onChange}
         placeholder="Ejemplo: Cortar el jardin"
+        autoFocus
       />
       <div className="TodoForm-buttonContainer">
         <button
