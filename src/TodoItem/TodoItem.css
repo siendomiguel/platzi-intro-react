@@ -10,6 +10,7 @@
 
 .TodoItem-p {
   margin: 24px 0 24px 24px;
+  color: #1E1E1F;
   width: calc(100% - 120px);
   font-size: 18px;
   line-height: 24px;
