@@ -9,25 +9,25 @@ function TodoForm() {
     setOpenModal,
   } = React.useContext(TodoContext);
   
-  const onChange = (event) => {
-    setNewTodoValue(event.target.value);
+  const onChange = (e) => {
+    setNewTodoValue(e.target.value);
   };
   const onCancel = () => {
     setOpenModal(false);
   };
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = (e) => {
+    e.preventDefault();
     addTodo(newTodoValue);
     setOpenModal(false);
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <label>Escribe tu nuevo TODO</label>
+      <label>Escribe tu nueva tarea</label>
       <textarea
         value={newTodoValue}
         onChange={onChange}
-        placeholder="Cortar la cebolla oara el almuerzo"
+        placeholder="Ejemplo: Cortar el jardin"
       />
       <div className="TodoForm-buttonContainer">
         <button
