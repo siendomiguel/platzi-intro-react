@@ -1,45 +1,45 @@
-import { useContext, useState } from "react";
-import { TodoContext } from "../context/context";
-import "./TodoForm.css";
+import React from 'react';
+import { TodoContext } from '../context/context';
+import './TodoForm.css';
 
 function TodoForm() {
-  const [newTodoValue, setNewTodoValue] = useState('');
-
-  const { addTodo, setOpenModal } = useContext(TodoContext);
-
-  const onWrite = (e) => {
-    setNewTodoValue(e.target.value);
+  const [newTodoValue, setNewTodoValue] = React.useState('');
+  const {
+    addTodo,
+    setOpenModal,
+  } = React.useContext(TodoContext);
+  
+  const onChange = (event) => {
+    setNewTodoValue(event.target.value);
   };
   const onCancel = () => {
     setOpenModal(false);
   };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (event) => {
+    event.preventDefault();
     addTodo(newTodoValue);
     setOpenModal(false);
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <label>Escribe tu nueva tarea</label>
+      <label>Escribe tu nuevo TODO</label>
       <textarea
         value={newTodoValue}
-        placeholder="Ejemplo: Comprar arroz"
-        onChange={onWrite}
+        onChange={onChange}
+        placeholder="Cortar la cebolla oara el almuerzo"
       />
       <div className="TodoForm-buttonContainer">
         <button
-          className="TodoForm-button TodoForm-button--cancel"
           type="button"
+          className="TodoForm-button TodoForm-button--cancel"
           onClick={onCancel}
-        >
+          >
           Cancelar
         </button>
         <button
-          className="TodoForm-button TodoForm-button--add"
           type="submit"
-          onClick={onCancel}
+          className="TodoForm-button TodoForm-button--add"
         >
           Añadir
         </button>
